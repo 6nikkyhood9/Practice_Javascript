@@ -1,46 +1,57 @@
 //<!--Задание-->
-//<!--Реализовать программу на Javascript, которая будет находить все числа кратные 5 (делятся на 5 без остатка) в заданном-->
-//<!--диапазоне.-->
+//<!--Реализовать функцию, которая будет производить математические операции с введеными пользователем числами.-->
 //
 //<!--Технические требования:-->
 //
-//<!--Считать с помощью модального окна браузера число, которое введет пользователь.-->
-//<!--Вывести в консоли все числа кратные 5, от 0 до введенного пользователем числа. Если таких чисел нету - вывести в консоль-->
-//<!--фразу `Sorry, no numbers'-->
-//<!--Обязательно необходимо использовать синтаксис ES6 (ES2015) при создании переменных.-->
+//<!--Считать с помощью модального окна браузера два числа.-->
+//<!--Считать с помощью модального окна браузера математическую операцию, которую нужно совершить. Сюда может быть введено +,-->
+//<!-- -, *, /.-->
+//<!--Создать функцию, в которую передать два значения и операцию.-->
+//<!--Вывести в консоль результат выполнения функции.-->
 //
 //
 //<!--Не обязательное задание продвинутой сложности:-->
 //
-//<!--Проверить, что введенное значение является целым числом. Если данное условие не соблюдается, повторять вывод окна на-->
-//<!--экран до тех пор, пока не будет введено целое число.-->
-//<!--Считать два числа, m и n. Вывести в консоль все простые числа-->
-//<!--(http://ru.math.wikia.com/wiki/%D0%9F%D1%80%D0%BE%D1%81%D1%82%D0%BE%D0%B5_%D1%87%D0%B8%D1%81%D0%BB%D0%BE) в диапазоне от-->
-//<!--m до n (меньшее из введенных чисел будет m, бОльшее будет n). Если хотя бы одно из чисел не соблюдает условие валидации,-->
-//<!--указанное выше, вывести сообщение об ошибке, и спросить оба числа заново.-->
-//<script src="js/main.js">
+//<!--После ввода данных добавить проверку их корректности. Если пользователь не ввел числа, либо при вводе указал не числа, - -->
+//<!--спросить оба числа заново (при этом значением по умолчанию для каждой из переменных должна быть введенная ранее-->
+//<!--информация)-->
 
-let min = +prompt("Enter min number");
-while (isNaN(min) || min <= 0) {
-    min = +prompt("Enter min number again");
+let number = +prompt("Enter the number ");
+number = checkNumbers(number);
+
+let operation = prompt("Enter operation");
+
+let anotherNumber = +prompt("Enter another number");
+anotherNumber = checkNumbers(anotherNumber);
+
+const result = mathOperation(number, anotherNumber, operation);
+
+if (result) {
+    console.log(result);
+} else {
+    console.log("!!Error of operation!!");
 }
-let max = +prompt("Enter max number");
-while (isNaN(max) || max <= 0) {
-    max = +prompt("Enter max number again");
-}
-for (let i = min; i < max; i++) {
-    if (i === 1) {
-        continue;
-    }
-    let isSimple = true;
-    for (let j = 2; j < i; j++) {
-        if (!(i % j)) {
-            isSimple = false;
-            break;
-        }
-    }
-    if (isSimple) {
-        console.log(i);
+
+function mathOperation(number1, number2, operator) {
+    switch (operator) {
+        case "+" :
+            return number1 + number2;
+        case "-" :
+            return number1 - number2;
+        case "*" :
+            return number1 * number2;
+        case "/" :
+            return number1 / number2;
+        default:
+            return false;
     }
 }
-const x = 5 + max;
+
+function checkNumbers(number) {
+    while (isNaN(number)) {
+        number = +prompt("Enter the number ");
+    }
+    return number;
+}
+
+alert(result);
