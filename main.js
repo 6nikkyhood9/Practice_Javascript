@@ -1,54 +1,46 @@
-let name = prompt("Enter your name");
-while (!name || !isNaN(parseFloat(name))) {
-    name = prompt("Enter your name");
+//<!--Задание-->
+//<!--Реализовать программу на Javascript, которая будет находить все числа кратные 5 (делятся на 5 без остатка) в заданном-->
+//<!--диапазоне.-->
+//
+//<!--Технические требования:-->
+//
+//<!--Считать с помощью модального окна браузера число, которое введет пользователь.-->
+//<!--Вывести в консоли все числа кратные 5, от 0 до введенного пользователем числа. Если таких чисел нету - вывести в консоль-->
+//<!--фразу `Sorry, no numbers'-->
+//<!--Обязательно необходимо использовать синтаксис ES6 (ES2015) при создании переменных.-->
+//
+//
+//<!--Не обязательное задание продвинутой сложности:-->
+//
+//<!--Проверить, что введенное значение является целым числом. Если данное условие не соблюдается, повторять вывод окна на-->
+//<!--экран до тех пор, пока не будет введено целое число.-->
+//<!--Считать два числа, m и n. Вывести в консоль все простые числа-->
+//<!--(http://ru.math.wikia.com/wiki/%D0%9F%D1%80%D0%BE%D1%81%D1%82%D0%BE%D0%B5_%D1%87%D0%B8%D1%81%D0%BB%D0%BE) в диапазоне от-->
+//<!--m до n (меньшее из введенных чисел будет m, бОльшее будет n). Если хотя бы одно из чисел не соблюдает условие валидации,-->
+//<!--указанное выше, вывести сообщение об ошибке, и спросить оба числа заново.-->
+//<script src="js/main.js">
+
+let min = +prompt("Enter min number");
+while (isNaN(min) || min <= 0) {
+    min = +prompt("Enter min number again");
 }
-let age = Number(prompt("Enter your age"));
-while (isNaN(age)) {
-    age = prompt("Enter your age");
+let max = +prompt("Enter max number");
+while (isNaN(max) || max <= 0) {
+    max = +prompt("Enter max number again");
 }
-
-const welcomeText = `Welcome ${name}`;
-
-const disableText = "You are not allowed to visit this website.";
-
-if (age < 18) {
-    alert(disableText);
-} else if (age >= 18 && age <= 22) {
-    let result = confirm("Are you sure you want to continue?");
-    if (result) {
-        alert(welcomeText);
-    } else {
-        alert(disableText);
+for (let i = min; i < max; i++) {
+    if (i === 1) {
+        continue;
     }
-} else {
-    alert(welcomeText);
-}
-
-function userInteraction(name, secondName, age){
-    name = prompt('Enter your name.');
-    while(!name || !isNaN(parseFloat(name))){
-        name = prompt('Enter your name');
-    }
-    age = Number(prompt('Enter your age'));
-    while(isNaN(age)){
-        age = prompt('Enter your age');
-    }
-    const = `Welcome ${name}`;
-    
-    const disableText = 'You are not allowed visit this website.';
-    
-    if (age < 18) {
-        alert(disableText);
-    } else if (age >= 18 && age <= 22) {
-        let result = confirm("Are you sure you want to continue?");
-        if (result) {
-            alert(welcomeText);
-        } else {
-            alert(disableText);
+    let isSimple = true;
+    for (let j = 2; j < i; j++) {
+        if (!(i % j)) {
+            isSimple = false;
+            break;
         }
-    } else {
-        alert(welcomeText);
     }
-        
+    if (isSimple) {
+        console.log(i);
     }
 }
+const x = 5 + max;
