@@ -1,57 +1,30 @@
 //<!--Задание-->
-//<!--Реализовать функцию, которая будет производить математические операции с введеными пользователем числами.-->
+//<!--Реализовать функцию подсчета факториала числа.-->
 //
 //<!--Технические требования:-->
 //
-//<!--Считать с помощью модального окна браузера два числа.-->
-//<!--Считать с помощью модального окна браузера математическую операцию, которую нужно совершить. Сюда может быть введено +,-->
-//<!-- -, *, /.-->
-//<!--Создать функцию, в которую передать два значения и операцию.-->
-//<!--Вывести в консоль результат выполнения функции.-->
+//<!--Считать с помощью модального окна браузера число, которое введет пользователь.-->
+//<!--С помощью функции посчитать факториал числа, которое ввел пользователь, и вывести его на экран.-->
+//<!--Использовать синтаксис ES6 для работы с перемеными и функциями.-->
 //
 //
 //<!--Не обязательное задание продвинутой сложности:-->
 //
-//<!--После ввода данных добавить проверку их корректности. Если пользователь не ввел числа, либо при вводе указал не числа, - -->
-//<!--спросить оба числа заново (при этом значением по умолчанию для каждой из переменных должна быть введенная ранее-->
-//<!--информация)-->
+//<!--После ввода данных добавить проверку их корректности. Если пользователь не ввел числа, либо при вводе их указал не-->
+//<!--числа, - спросить оба числа заново (при этом значением по умолчанию для каждой из переменных должна быть введенная ранее-->
+//<!--информация).-->
 
-let number = +prompt("Enter the number ");
-number = checkNumbers(number);
-
-let operation = prompt("Enter operation");
-
-let anotherNumber = +prompt("Enter another number");
-anotherNumber = checkNumbers(anotherNumber);
-
-const result = mathOperation(number, anotherNumber, operation);
-
-if (result) {
-    console.log(result);
-} else {
-    console.log("!!Error of operation!!");
+let number = +prompt("Enter the number");
+while (isNaN(number) || !number) {
+    number = +prompt("Enter number again");
 }
 
-function mathOperation(number1, number2, operator) {
-    switch (operator) {
-        case "+" :
-            return number1 + number2;
-        case "-" :
-            return number1 - number2;
-        case "*" :
-            return number1 * number2;
-        case "/" :
-            return number1 / number2;
-        default:
-            return false;
+function factorial(n) {
+    let x = 1;
+    for (let i = 1; i <= n; i++) {
+        x = x * i;
     }
+    return x;
 }
 
-function checkNumbers(number) {
-    while (isNaN(number)) {
-        number = +prompt("Enter the number ");
-    }
-    return number;
-}
-
-alert(result);
+console.log(factorial(number));
